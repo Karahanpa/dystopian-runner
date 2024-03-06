@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public float jumpForce = 10f;
+    public float bulletSpeed = 10f;
     public bool isGrounded = true;
 
 
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
         animator = rigidbody2d.GetComponent<Animator>();
 
         jumpAction.started += ctx => Jump();
+        launchAction.started += ctx => LaunchProjectile();
     }
 
     private void Update()
@@ -45,6 +47,18 @@ public class PlayerController : MonoBehaviour
         rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpForce);
         animator.SetTrigger("jump");
         isGrounded = false;
+    }
+
+    private void LaunchProjectile()
+    {
+        GameObject bullet = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+
+        Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+
+        if(bulletRb != null)
+        {
+            bulletRb.velocity = transform.right * bulletSpeed;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

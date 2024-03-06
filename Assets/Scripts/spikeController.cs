@@ -7,6 +7,7 @@ public class spikeController : MonoBehaviour
     public GameObject box;
     private SpriteRenderer boxSprite;
     private SpriteRenderer spriteRenderer;
+    float leftSide;
 
     private void Start()
     {
@@ -15,7 +16,7 @@ public class spikeController : MonoBehaviour
     }
     private void FixedUpdate()  
     {
-        float leftSide = box.transform.position.x - boxSprite.bounds.size.x / 2f;
+        leftSide = box.transform.position.x - boxSprite.bounds.size.x / 2f;
 
         transform.position = new Vector3(leftSide - spriteRenderer.bounds.size.x + 0.3f, transform.position.y, transform.position.z);
     }
