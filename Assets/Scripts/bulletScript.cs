@@ -18,9 +18,12 @@ public class bulletScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
         }
 
-        Debug.Log("carpisma");
+        if (collision.gameObject.CompareTag("Destroyer"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

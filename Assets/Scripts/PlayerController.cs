@@ -51,7 +51,9 @@ public class PlayerController : MonoBehaviour
 
     private void LaunchProjectile()
     {
-        GameObject bullet = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        Vector3 spawnPoint = new Vector3 (transform.position.x + 0.6f, transform.position.y, transform.position.z);
+
+        GameObject bullet = Instantiate(projectilePrefab, spawnPoint, Quaternion.identity);
 
         Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
 
