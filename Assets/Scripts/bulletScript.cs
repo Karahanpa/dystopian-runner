@@ -19,9 +19,10 @@ public class bulletScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.SetActive(false);
+            Destroy(gameObject);
         }
 
-        if (collision.gameObject.CompareTag("Destroyer"))
+        if (collision.gameObject.CompareTag("Destroyer") || collision.gameObject.CompareTag("Bullet Destroyer"))
         {
             Destroy(gameObject);
         }
