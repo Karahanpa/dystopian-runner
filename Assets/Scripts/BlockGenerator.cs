@@ -6,11 +6,7 @@ public class BlockGenerator : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public GameObject enemy;
-    void Start()
-    {
-        
-    }
-
+    
     private void FixedUpdate()
     {
         transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
@@ -26,7 +22,7 @@ public class BlockGenerator : MonoBehaviour
             transform.position = new Vector3(Random.Range(15f, 22f), transform.position.y, transform.position.z);
             if (moveSpeed < 20)
             {
-                moveSpeed += 0.7f;
+                moveSpeed += 0.4f;
             }
         }
     }
